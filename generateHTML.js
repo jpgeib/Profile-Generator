@@ -186,12 +186,20 @@ const colors = {
                         <div class="col">
                             <h1>Hi!</h1>
                             <h2>My name is ${data.name}</h2>
-                            <h4>Currently @ ${data.company}</h4>
+                            <h4>${data.company ? `Currently @ ${data.company}` : ""}</h4>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col links-nav">
-                            <a class="nav-link" href="#">Something</a>
+                        ${
+                          data.location
+                            ? `<a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/${
+                                data.location
+                              }"><i class="fas fa-location-arrow"></i> ${
+                                data.location
+                              }</a>`
+                            : ""
+                        }
                             <a class="nav-link" href="#">Something else</a>
                             <a class="nav-link" href="#">Other something</a>
                         </div>
@@ -242,3 +250,5 @@ const colors = {
 
 </html>`
           };
+
+module.exports = generateHTML;
