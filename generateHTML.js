@@ -178,13 +178,15 @@ const colors = {
         <div class="container">
 
             <div class="wrapper">
-                <div class="photo-header"></div>
+                <div class="photo-header">
+                <img src="${data.avatar_url}" alt="Photo of ${data.name}" />
+                </div>
                 <div class="card">
                     <div class="row">
                         <div class="col">
                             <h1>Hi!</h1>
-                            <h2>My name is</h2>
-                            <h4>Currently @</h4>
+                            <h2>My name is ${data.name}</h2>
+                            <h4>Currently @ ${data.company}</h4>
                         </div>
                     </div>
                     <div class="row">
@@ -201,25 +203,29 @@ const colors = {
 
             <div class="row">
                 <div class="col">
-                    <h3>I build things and teach people to code.</h3>
+                    <h3>${data.bio ? `${data.bio}` : "I build things and teach people to code."}</h3>
                 </div>
             </div>
 
             <div class="row">
                 <div class="card col">
                     <h3>Public Repositories</h3>
+                    <h3>${data.public_repos}</h3>
                 </div>
                 <div class="card col">
                     <h3>Followers</h3>
+                    <h3>${data.followers}</h3>
                 </div>
             </div>
 
             <div class="row">
                 <div class="card col">
                     <h3>GitHub Stars</h3>
+                    <h3>${data.stars}</h3>
                 </div>
                 <div class="card col">
                     <h3>Following</h3>
+                    <h3>${data.following}</h3>
                 </div>
             </div>
 
