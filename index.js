@@ -26,7 +26,7 @@ const questions = [
 // };
 
 function init() {
-    inquire.prompt(questions).then(({ github, color }) => {
+    inquirer.prompt(questions).then(({ github, color }) => {
         console.log("Searching...");
         axios.get(`https://api.github.com/users/${github}`).then(function (res) {
             const profileHTML = html({color, res})
