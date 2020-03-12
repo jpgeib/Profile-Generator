@@ -2,7 +2,8 @@ const fs = require('fs');
 const pdf = require('html-pdf');
 const html = require("./generateHTML");
 const options = { format: 'Letter' };
-
+const inquirer = require("inquirer");
+const axios = require("axios");
 
 // fs.readFileSync('./generateHTML.js', 'utf8');
 
@@ -29,8 +30,9 @@ function init() {
     inquirer.prompt(questions).then(({ github, color }) => {
         console.log("Searching...");
         axios.get(`https://api.github.com/users/${github}`).then(function (res) {
-            const profileHTML = html({color, res})
-            console.log('Github response: ' + res);
+            console.log('Github response: ' + res.data, color);
+        const profileHTML = html({color, ...res.data})
+            
             pdf.create(profileHTML, options).toFile('./Profile-Generator.pdf', function (err, res) {
                 if (err) return console.log(err);
                 console.log(res);
