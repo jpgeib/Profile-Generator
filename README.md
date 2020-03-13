@@ -1,0 +1,3 @@
+This application involves taking in two user inputs: GitHub username and choice of four color options for the layout of the profile via node.js. Upon receiving these inputs, the generateHTML function will create a profile page utilizing the user's GitHub profile for information, and creating their desired layout based on which color they chose. It has the functionality of displaying links to location, and the original GitHub profile. 
+
+Lastly, the code will generate a pdf of the generated html, found in this repository.
