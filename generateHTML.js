@@ -200,8 +200,16 @@ const colors = {
                               }</a>`
                             : ""
                         }
-                            <a class="nav-link" href="#">Something else</a>
-                            <a class="nav-link" href="#">Other something</a>
+                        <a class="nav-link" target="_blank" rel="noopener noreferrer" href="${
+                          data.html_url
+                        }"><i class="fab fa-github-alt"></i> GitHub</a>
+                        ${
+                          data.blog
+                            ? `<a class="nav-link" target="_blank" rel="noopener noreferrer" href="${
+                                data.blog
+                              }"><i class="fas fa-rss"></i> Blog</a>`
+                            : ""
+                        }
                         </div>
                     </div>
 
