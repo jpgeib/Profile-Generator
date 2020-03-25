@@ -33,12 +33,9 @@ function init() {
         const queryUrl = `https://api.github.com/users/${github}`;
         axios.get(queryUrl).then(function (res) {
             console.log('Github response: ' + res.data, color);
-            const profileHTML = html({ color, ...res.data })
+            data = {...res.data};
+            data.color = color;
 
-            pdf.create(profileHTML, options).toFile('./Profile-Generator.pdf', function (err, res) {
-                if (err) return console.log(err);
-                console.log(res);
-            });
             axios // axios call to get the stars
                 .get(`https://api.github.com/users/${github}/repos?per_page=100`)
                 .then((res) => {
@@ -48,6 +45,12 @@ function init() {
                         data.stars += res.data[i].stargazers_count;
                     }
                 });
+                const profileHTML = html(data)
+            pdf.create(profileHTML, options).toFile('./Profile-Generator.pdf', function (err, res) {
+                if (err) return console.log(err);
+                console.log(res);
+            });
+
         }).catch(err => {
             console.log(`User not found - ${github}`);
             process.exit(1);
